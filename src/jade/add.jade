@@ -12,7 +12,10 @@ html(lang='zh')
     link(rel='stylesheet', href='/assets/styles/normalize.css')
     link(rel='stylesheet', href='/assets/styles/components-rounded.css')
     link(rel='stylesheet', href='/assets/styles/release.css')
+    link(rel='stylesheet', href='/assets/styles/datepicker.css')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js')
     script(src='/assets/js/modernizr-latest.js')
+    script(src='/assets/js/libs/jquery.datetimepicker.js')
 
   body
     //if lt IE 8
@@ -24,4 +27,4 @@ html(lang='zh')
     div.container
       include partials/_add
 
-    script(src='/assets/js/app.js')
+    script(src='/assets/js/add.js')
