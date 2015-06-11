@@ -1,0 +1,51 @@
+{
+  "name": "laichi-homepage",
+  "version": "0.0.1",
+  "description": "Laichi home page",
+  "authors": [
+    "Owen Yang"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "repository": {
+    "type": "git",
+    "url": "git@git.laichi.com:mis/laichi_admin.git"
+  },
+  "scripts": {
+    "preinstall": "npm install -g gulp",
+    "init": "npm install",
+    "dev": "gulp dev",
+    "test": "gulp test --prod",
+    "build": "npm install && gulp build --prod"
+  },
+  "devDependencies": {
+    "autoprefixer-stylus": "^0.5.0",
+    "del": "^1.1.1",
+    "globule": "^0.2.0",
+    "gulp": "^3.8.8",
+    "gulp-autoprefixer": "^1.0.1",
+    "gulp-connect": "^2.0.6",
+    "gulp-jade": "^0.10.0",
+    "gulp-newer": "^0.3.0",
+    "gulp-rename": "^1.2.0",
+    "gulp-streamify": "0.0.5",
+    "gulp-stylus": "^2.0.1",
+    "gulp-svg2ttf": "^0.1.0",
+    "gulp-svgicons2svgfont": "^0.2.0",
+    "gulp-sync-processor": "^0.1.1",
+    "gulp-ttf2eot": "0.0.10",
+    "gulp-ttf2woff": "0.0.8",
+    "gulp-uglify": "^1.0.1",
+    "gulp-util": "^3.0.1",
+    "jade": "^1.8.2",
+    "jeet": "^6.1.2",
+    "lodash": "^2.4.1",
+    "run-sequence": "^1.0.2",
+    "through": "^2.3.7"
+  },
+  "dependencies": {
+    "bootstrap-styl": "^4.0.3",
+    "modernizr": "^3.0.0-alpha.3",
+    "normalize.css": "^3.0.3"
+  }
+}
