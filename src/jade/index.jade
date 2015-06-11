@@ -10,8 +10,10 @@ html(lang='zh')
 
     // Place favicon.ico in the root directory
     link(rel='stylesheet', href='/assets/styles/normalize.css')
+    link(rel='stylesheet', href='/assets/styles/components-rounded.css')
     link(rel='stylesheet', href='/assets/styles/release.css')
     script(src='/assets/js/modernizr-latest.js')
+    script(src='/assets/js/libs/d3.js')
 
   body
     //if lt IE 8
@@ -21,9 +23,14 @@ html(lang='zh')
         to improve your experience.
 
     div.container
-      div.container-inner
-        include partials/_header
-        include partials/_footer
-      //- img(src='/assets/images/design.jpg')
+      div.container-timeline
+        .portlet.light
+          .portlet-title
+            .caption
+              i.font-green-sharp.glyphicon.glyphicon-cog.t-subject-icon
+              span.caption-subject.font-green-sharp.bold.uppercase.t-subject Timeline
+              span.caption-helper all the events are here
+          .portlet-body
+            .time-line
 
     script(src='/assets/js/app.js')
