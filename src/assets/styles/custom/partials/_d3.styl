@@ -35,3 +35,24 @@
   shape-rendering: auto;
   fill-opacity: 0.5;
 }
+
+.tooltip
+  padding: 10px
+  max-width: 260px;
+  background-color: #44b6ae;
+  color: #fff;
+
+  .desc
+    z-index: 10;
+    position: relative;
+
+.tooltip:after
+  background-color: inherit;
+  content: "";
+  position: absolute;
+  height: 22px;
+  left: -9px;
+  top: 45%;
+  width: 22px;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);

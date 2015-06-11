@@ -94,6 +94,11 @@ ticks.each(function (t) {
   d3.select(this).append('circle').attr('r', 3).attr('fill', randomColor())
 })
 
+var tip = d3.select("body")
+  .append("div")
+  .attr("class", "tooltip")
+  .style("opacity", 0);
+
 function randomColor() {
   var r = Math.random() * 255;
   var g = Math.random() * 255;
@@ -121,6 +126,21 @@ function addDate(date, text) {
       .style('stroke-opacity', 1);
     parent.select('.water-drop')
       .style('fill-opacity', 1)
+
+    tip.transition()
+      .duration(500)
+      .style("opacity", 0);
+    tip.transition()
+      .duration(200)
+      .style("opacity", .9);
+
+    var desc = parent.select('.release-desc').text();
+    var color = parent.select('circle').attr('fill');
+    tip.html(
+      '<div class="desc">' + desc + '</div>')
+      .style('background-color', color)
+      .style("left", (d3.event.pageX + 20) + "px")
+      .style("top", (d3.event.pageY - 58) + "px");
   }
 
   function mout() {
@@ -130,6 +150,8 @@ function addDate(date, text) {
       .style('stroke-opacity', .5);
     parent.select('.water-drop')
       .style('fill-opacity', 0.5)
+    tip
+      .style('left', -9999)
   }
 
   var lineColor = randomColor();
@@ -137,7 +159,7 @@ function addDate(date, text) {
   g.append('circle')
     .attr('transform', 'translate(0, ' + 0 +')')
     .attr('r', 3)
-    .attr('fill', randomColor())
+    .attr('fill', lineColor)
 
 
   g
@@ -164,10 +186,15 @@ function addDate(date, text) {
     .on('mouseout', mout)
 
   g.append('text')
-    .attr('class', 'release-desc')
+    .attr('class', 'release-title')
     .attr("y", y2 + 20)
     .attr("x", -10)
-    .text(text)
+    .text(text.title)
+
+  g.append('text')
+    .attr('class', 'release-desc')
+    .style('display', 'none')
+    .text(text.content);
 }
 
 function r(name) {
@@ -179,7 +206,24 @@ function getRandomArbitrary(min, max) {
     return Math.random() * (max - min) + min;
 }
 
-var re = ['GCIS BAU', 'Ignite R3', 'AAMI Release', 'Data Clobber', 'GIO Packages']
+var re = [
+  {
+    title: 'GCIS BAU',
+    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+  }, {
+    title: 'Ignite R3',
+    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+  }, {
+    title: 'AAMI Release',
+    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+  }, {
+    title: 'Data Clobber',
+    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+  }, {
+    title: 'GIO Packages',
+    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+  }
+]
 
 for (var i = 4; i >= 0; i--) {
   r(re[i]);
