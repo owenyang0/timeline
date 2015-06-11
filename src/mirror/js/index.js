@@ -7,12 +7,9 @@ function renderData(data) {
 }
 
 $(function () {
-  $.ajax({
-    type: 'GET',
-    'url': 'http://localhost:3000/timeline/fancy',
-    success: function (doc) {
-      renderData(doc);
-    }
-  });
+  if (!localStorage.allEvents) {
+    localStorage.setItem("allEvents", "[]");
+  }
+  renderData(JSON.parse(localStorage.allEvents));
 });
 
