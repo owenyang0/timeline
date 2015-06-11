@@ -134,13 +134,15 @@ function addDate(date, text) {
       .duration(200)
       .style("opacity", .9);
 
-    var desc = parent.select('.release-desc').text();
     var color = parent.select('circle').attr('fill');
+    var item =  JSON.parse(parent.select('.release-data').text());
     tip.html(
-      '<div class="desc">' + desc + '</div>')
+      '<h2 class="title">' + item.content.title + '</h2>' +
+      '<div class="desc">' + item.content.content + '</div>' +
+      '<div class="extra">release date | ' + item.date + '</div>')
       .style('background-color', color)
       .style("left", (d3.event.pageX + 20) + "px")
-      .style("top", (d3.event.pageY - 58) + "px");
+      .style("top", (d3.event.pageY - 70) + "px");
   }
 
   function mout() {
@@ -152,6 +154,11 @@ function addDate(date, text) {
       .style('fill-opacity', 0.5)
     tip
       .style('left', -9999)
+  }
+
+  function handleClick() {
+    console.log('click');
+    window.location.href = '/update.html';
   }
 
   var lineColor = randomColor();
@@ -171,6 +178,7 @@ function addDate(date, text) {
     .style("stroke", 'none')
     .on('mouseenter', mo)
     .on('mouseout', mout)
+    .on('click', handleClick);
 
   g
     .append('line')
@@ -195,6 +203,16 @@ function addDate(date, text) {
     .attr('class', 'release-desc')
     .style('display', 'none')
     .text(text.content);
+
+  var data = JSON.stringify({
+    date: (new Date(date)).toLocaleDateString(),
+    content: text
+  })
+
+  g.append('text')
+    .attr('class', 'release-data')
+    .style('display', 'none')
+    .text(data);
 }
 
 
@@ -226,6 +244,6 @@ var re = [
   }
 ]
 
-// for (var i = 4; i >= 0; i--) {
-//   r(re[i]);
-// };
+for (var i = 4; i >= 0; i--) {
+  r(re[i]);
+};
