@@ -2,8 +2,8 @@ var margin = {top: 50, right: 30, bottom: 50, left: 30},
     width = 880 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
-var t1 = new Date(2015, 4, 1),
-    t2 = new Date(2015, 7, 1),
+var t1 = new Date(2015, 5, 12),
+    t2 = new Date(2015, 8, 12),
     t0 = d3.time.month.offset(t1, 0),
     t3 = d3.time.month.offset(t2, 0);
 
