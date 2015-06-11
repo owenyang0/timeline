@@ -1,9 +1,9 @@
 var margin = {top: 50, right: 30, bottom: 50, left: 30},
-    width = 900 - margin.left - margin.right,
+    width = 880 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
 var t1 = new Date(2015, 0, 1),
-    t2 = new Date(2016, 0, 1),
+    t2 = new Date(2015, 4, 1),
     t0 = d3.time.month.offset(t1, 0),
     t3 = d3.time.month.offset(t2, 0);
 
@@ -17,7 +17,8 @@ var x = d3.time.scale()
 var xAxis = d3.svg.axis()
     .scale(x)
     .orient("bottom")
-    .tickSize(10, 0);
+    .ticks(d3.time.weeks)
+    // .tickSize(10, 0);
 
 var xLinear = d3.scale.linear()
     .domain([0, width])
@@ -26,23 +27,23 @@ var xLinear = d3.scale.linear()
 var xAxisPot = d3.svg.axis()
     .scale(xLinear)
     .orient("bottom")
-    .ticks(80)
+    .ticks(60)
     .tickSize(10, 0);
 
 var svg = d3.select(".time-line").append("svg")
     .attr('class', 'tick-mark')
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", 500)
+    .attr("width", width + margin.left + margin.right + 40)
+    .attr("height", 100)
     .append("g")
     .attr('class', 'tick-g')
     .attr("transform", "translate(" + margin.left + "," + 0 + ")");
 
-// var svg2 = d3.select(".time-line").append("svg")
-//     .attr('class', 'tick-pot')
-//     .attr("width", width + margin.left + margin.right)
-//     .attr("height", height + margin.bottom)
-//     .append("g")
-//     .attr("transform", "translate(" + margin.left + "," + 5 + ")");
+var svg2 = d3.select(".time-line").append("svg")
+    .attr('class', 'tick-pot')
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.bottom)
+    .append("g")
+    .attr("transform", "translate(" + margin.left + "," + 5 + ")");
 
 svg.append("g")
     .attr("class", "x axis axis-x")
@@ -53,12 +54,32 @@ svg.append("g")
     .attr("x", -10)
     .style("text-anchor", "start")
 
-svg.append("g")
+svg2.append("g")
     .attr("class", "x axis axis-pot x-ticks")
-    .attr("transform", "translate(0," + 50 + ")")
+    .attr("transform", "translate(0," + 0 + ")")
     .call(xAxisPot)
   .selectAll("text")
     .style("display", "none")
+
+var format = d3.time.format("%Y-%m");
+
+svg.select('.x')
+    .append("g")
+    .attr("class", "date-start")
+    .append('text')
+    .attr("x", -30)
+    .attr("y", 28)
+    .style("text-anchor", "start")
+    .text(format(t1));
+
+svg.select('.x')
+    .append("g")
+    .attr("class", "date-end")
+    .append('text')
+    .attr("x", width)
+    .attr("y", 27)
+    .style("text-anchor", "start")
+    .text(format(t2));
 
 var ticks = d3.select('.axis-x').selectAll('.tick');
 
@@ -86,7 +107,7 @@ var dropPath = "M22.5 81.2h-1.2000000000000002c-.3 0-.6 0-.9-.1h-.4c-.2 0-.4 0-.
 function addDate(date, text) {
   var xPos = x(date);
 
-  var g = svg.select('.axis-pot')
+  var g = svg2.select('.axis-pot')
     .append('g')
     .attr('class', 'ticks-new')
     .attr("transform", "translate(" + xPos + ",0)");
@@ -124,7 +145,7 @@ function addDate(date, text) {
     .attr('class', 'water-drop')
     .attr({d: dropPath})
     .attr('transform', 'translate(-7, ' + 15 +') scale(0.3)')
-    .attr('fill', lineColor)
+    .style('fill', lineColor)
     .style("stroke", 'none')
     .on('mouseenter', mo)
     .on('mouseout', mout)
