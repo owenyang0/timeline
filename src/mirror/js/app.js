@@ -197,13 +197,14 @@ function addDate(date, text) {
     .text(text.content);
 }
 
-function r(name) {
-  var date = getRandomArbitrary(t1.valueOf(), t2.valueOf());
-  addDate(date, name)
-}
 
 function getRandomArbitrary(min, max) {
     return Math.random() * (max - min) + min;
+}
+
+function r(text) {
+  var date = getRandomArbitrary(t1.valueOf(), t2.valueOf());
+  addDate(date, text)
 }
 
 var re = [
