@@ -1,0 +1,28 @@
+.new-release
+  .portlet.box.blue-hoki
+      .portlet-title
+          .caption
+            | Update a release event
+        .portlet-body.form
+          form.form-horizontal(action='#')
+            .form-body
+              .form-group
+                label.col-md-3.control-label Release Date
+                .col-md-5
+                  .input-icon
+                    input.form-control.timeline-date(type='text', placeholder='Release Date')
+              .form-group
+                label.col-md-3.control-label Release Title
+                .col-md-5
+                  .input-icon
+                    input.form-control.timeline-release(type='text', placeholder='Release Title')
+              .form-group
+                label.col-md-3.control-label Release Description
+                .col-md-5
+                  .input-icon
+                    input.form-control.timeline-description(type='text', placeholder='Release Description')
+            .form-actions.fluid
+              .row
+                .col-md-offset-3.col-md-9
+                  button.btn.green(type='submit', id='submit') Submit
+                  a(href="/").btn.default(type='button') Cancel
