@@ -4,7 +4,8 @@ $(function () {
     format: 'Y,m,d'
   });
 
-  $('#submit').click(function () {
+  $('#submit').click(function (e) {
+    e.preventDefault();
     $.ajax({
       type: "POST",
       url: 'http://localhost:3000/timeline',
@@ -14,7 +15,7 @@ $(function () {
         "text": $('.timeline-description').val()
       },
       complete: function () {
-        location.reload();
+        window.location.href = "/";
       },
       dataType: 'application/json'
     });
