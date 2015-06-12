@@ -158,7 +158,7 @@ function addDate(date, text) {
 
   function handleClick() {
     console.log('click');
-    window.location.href = '/update.html';
+    window.location.href = 'update.html';
   }
 
   var lineColor = randomColor();
