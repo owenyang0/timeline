@@ -1,6 +1,6 @@
 $(function () {
   if (!localStorage.allEvents) {
-    window.location.href = "/";
+    window.location.href = "/timeline/dist/";
   } else {
     console.log(localStorage.allEvents);
   }
@@ -22,7 +22,7 @@ $(function () {
       }
     });
     localStorage.setItem("allEvents", JSON.stringify(allEvents));
-    window.location.href = "/";
+    window.location.href = "/timeline/dist/";
   });
 });
 
