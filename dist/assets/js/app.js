@@ -109,7 +109,7 @@ function randomColor() {
 
 
 var dropPath = "M22.5 81.2h-1.2000000000000002c-.3 0-.6 0-.9-.1h-.4c-.2 0-.4 0-.5-.1-4.8-.7-9.3-2.9-12.8-6.4-4.2-4.2-6.5-9.6-6.7-15.3v-5.5c0-.2 0-.3.1-.5 0-.2 0-.3.1-.5 0-.2 0-.3.1-.5 0-.1 0-.3.1-.4l.1-.5c0-.1 0-.3.1-.4l.1-.6c0-.1 0-.2.1-.3l.2-.7v-.1c1.6-6.4 5.1-10.7 8.8-15.2 5.8-7.1 12.5-15.3 12.5-34 0 0 0-.1.1-.1h.1s.1 0 .1.1c0 18.7 6.6 26.9 12.3 34.2 4.9 6.2 9.6 12.1 9.6 23.4v1.1c.1 12.3-9.8 22.4-22 22.4zm21.9-24.6v1.1-1.1zm-.2-2.9zm.1.9v.2-.2zm0 1v.5-.5zm.1 3.7z";
-function addDate(date, text) {
+function addDate(date, id, text) {
   var xPos = x(date);
 
   var g = svg2.select('.axis-pot')
@@ -157,8 +157,8 @@ function addDate(date, text) {
   }
 
   function handleClick() {
-    console.log('click');
-    window.location.href = 'update.html';
+    console.log('update id', id);
+    window.location.href = 'update.html?id=' + id;
   }
 
   var lineColor = randomColor();
@@ -205,6 +205,7 @@ function addDate(date, text) {
     .text(text.content);
 
   var data = JSON.stringify({
+    id: id,
     date: (new Date(date)).toLocaleDateString(),
     content: text
   })
