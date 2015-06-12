@@ -16,7 +16,7 @@ $(function () {
       }
     });
     localStorage.setItem("allEvents", JSON.stringify(allEvents));
-    window.location.href = "/";
+    window.location.href = "/timeline/dist/";
   });
 });
 
