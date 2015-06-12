@@ -1,6 +1,8 @@
 $(function () {
   if (!localStorage.allEvents) {
-    localStorage.setItem("allEvents", "[]");
+    window.location.href = "/";
+  } else {
+    console.log(localStorage.allEvents);
   }
 
   $(".timeline-date").datetimepicker({

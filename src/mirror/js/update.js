@@ -1,8 +1,4 @@
 $(function () {
-  if (!localStorage.allEvents) {
-    localStorage.setItem("allEvents", "[]");
-  }
-
   $(".timeline-date").datetimepicker({
     timepicker: false,
     format: 'Y-m-d'
