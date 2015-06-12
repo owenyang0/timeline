@@ -13,8 +13,8 @@ function initData() {
       "date":"2015-06-13",
       "content":
       {
-        "title":"GCIS BAU",
-        "content":"Improved the performance of the Cogen Customer Excluder job. It used to take 6.5 hours, now it will only take 2.5 hours."
+        "title":"Project BAU",
+        "content":"Improved the performance of one the batch jobs. It used to take 6.5 hours, now it will only take 1.3 hours."
       }
     },
     {
@@ -22,8 +22,8 @@ function initData() {
       "date":"2015-07-13",
       "content":
       {
-        "title":"AAI NZ",
-        "content":"Search by phone number functinality. Now QuickAssist can let the consultant search customers' information by his/her phone number for NZ customers."
+        "title":"Search Customers",
+        "content":"Search by phone number functinality. Now our application can let the customer search his/her information by phone numbers."
       }
     },
     {
@@ -31,8 +31,8 @@ function initData() {
       "date":"2015-07-28",
       "content":
       {
-        "title":"GIO Packages",
-        "content":"GIO Packages Renew products release. Now GCIS will have a ability to add a new Protect customer who is renewal from the legacy Cogen System customer."
+        "title":"Hot Fix",
+        "content":"Hot fix release. Now our application will be able to add a new customer with his/her detailed information, e.g. name, phone number, abn, etc."
       }
     }
   ];
